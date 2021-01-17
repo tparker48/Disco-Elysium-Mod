@@ -1,0 +1,10 @@
+<GameInfo Name="Disco Elysium">
+    			<Folder>Disco Elysium</Folder>
+    			<ModsDirectory>Mods</ModsDirectory>
+    			<ModInfo>Info.json</ModInfo>
+    			<GameExe>disco.exe</GameExe>
+    			<EntryPoint>[Assembly-CSharp.dll]MainMenuList.Start:Before</EntryPoint>
+    			<StartingPoint>[Assembly-CSharp.dll]MainMenuList.Start:Before</StartingPoint>        
+    			<UIStartingPoint>[Assembly-CSharp.dll]MainMenuList.Start:After</UIStartingPoint>
+    			<MinimalManagerVersion>0.22.15</MinimalManagerVersion>
+</GameInfo>
