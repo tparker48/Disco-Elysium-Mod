@@ -10,4 +10,4 @@ This mod adds the following features to the game:
 - Force check pass
 - Force check fail
 - Toggle the game's UI
-- maybe more?
+- Inventory Organization by Stat Effects ???
