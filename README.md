@@ -6,7 +6,7 @@ This mod adds the following features to the game:
 - Add skill points
 - Unlock thoughts
 - Faster run speed
-- Teleport
+- Teleport-on-click
 - Force check pass
 - Force check fail
 - Toggle the game's UI
