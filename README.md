@@ -11,3 +11,4 @@ This mod adds the following features to the game:
 - Force check fail
 - Toggle the game's UI
 - Inventory Organization by Stat Effects ???
+- Toggle: changing clothes doesnt change appearance
