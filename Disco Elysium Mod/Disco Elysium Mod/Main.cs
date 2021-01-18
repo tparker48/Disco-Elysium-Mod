@@ -14,7 +14,7 @@ namespace Disco_Elysium_Mod
         public static bool enabled;
         public static UnityModManager.ModEntry mod;
         public static string speed;
-        public static string ammo;
+        public static string money;
 
 
         static bool Load(UnityModManager.ModEntry modEntry)
@@ -42,34 +42,49 @@ namespace Disco_Elysium_Mod
 
         static void OnUpdate(UnityModManager.ModEntry modEntry, float dt)
         {
-            //if (Input.GetKeyDown(KeyCode.B))
-            //{
-            //    modEntry.Logger.Log("B was pressed!");
-            //    if (RunSpeed.runSpeed == 2f)
-            //    {
-            //        RunSpeed.runSpeed = 1f;
-            //    }
-            //    else
-            //    {
-            //        RunSpeed.runSpeed = 2f;
-            //    }
-            //}
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                modEntry.Logger.Log("B was pressed!");
+
+                
+            } 
         }
 
         static void OnGUI(UnityModManager.ModEntry modEntry)
         {
-            GUILayout.Label("RUN SPEED MULTIPLIER\n[1.0 - 3.0");
+            GUILayout.Label("RUN SPEED MULTIPLIER\n[1.0 - 3.0]");
             speed = GUILayout.TextField(speed, GUILayout.Width(100f));
-            if (GUILayout.Button("Apply") && float.TryParse(speed, out var s))
+
+            GUILayout.Label("Money\n[0 - 99]");
+            money = GUILayout.TextField(money, GUILayout.Width(100f));
+            if (GUILayout.Button("Apply"))
             {
-                if(s >= 1.0f && s <= 3.0f)
+                // set speed 
+                if (float.TryParse(speed, out var s))
                 {
-                    RunSpeed.runSpeed = s;
+                    if (s >= 1.0f && s <= 3.0f)
+                    {
+                        RunSpeed.runSpeed = s;
+                    }
+                    else
+                    {
+                        RunSpeed.runSpeed = 1.0f;
+                    }
                 }
-                else
+                
+                // set money
+                if (int.TryParse(money, out var m))
                 {
-                    RunSpeed.runSpeed = 1.0f;
+                    m *= 100;
+                    if (m >= 0 && m <= 99)
+                    {
+                        int currentBalance = LiteSingleton<Sunshine.Metric.PlayerCharacter>.Singleton.Money;
+                        LiteSingleton<Sunshine.Metric.PlayerCharacter>.Singleton.Money = m;
+                        NotificationSystem.NotificationUtil.ShowMoney(m - currentBalance);
+                    }
+                    
                 }
+
             }
         }
     }
