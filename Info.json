@@ -1,0 +1,8 @@
+{
+  "Id": "DiscoMod",
+  "DisplayName": "DiscoMod",
+  "Author": "Thomas Parker",
+  "Version": "1.0.0",
+  "AssemblyName": "Disco Elysium Mod.dll",
+  "EntryMethod": "Disco_Elysium_Mod.Main.Load"
+}
