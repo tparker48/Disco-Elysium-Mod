@@ -3,12 +3,10 @@ A mod for Disco Elysium with some requested features
 
 This mod adds the following features to the game:
 - Set money
-- Add skill points
-- Unlock thoughts
-- Faster run speed
-- Teleport on click
-- Force check pass
-- Force check fail
-- Toggle the game's UI
-- Inventory Organization by Stat Effects ???
+- Set skill points
+- Unlock all thoughts
+- Set run speed
+- Force check pass/fail
+- Toggle HUD
 - Toggle: changing clothes doesnt change appearance
+- Fast travel?
