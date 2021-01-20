@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityModManagerNet;
 using HarmonyLib;
@@ -15,6 +16,57 @@ namespace Disco_Elysium_Mod
     {
         public static bool ready = false;
         public static bool on = true;
+        public static bool updatingClothes = false;
+
+        public static List<string> originalOutfit = new List<string>();
+        public static List<string> currentOutfit = new List<string>();
+
+        public static List<string> originalHeadwear = new List<string>();
+        public static List<string> currentHeadwear = new List<string>();
+
+        public static void UpdateClothing(UnityModManager.ModEntry modEntry)
+        {
+            modEntry.Logger.Log("Updating Clothing");
+            modEntry.Logger.Log("Current Clothing = " + currentOutfit);
+            modEntry.Logger.Log("Original Clothing = " + originalOutfit);
+            
+            updatingClothes = true;
+            
+            //  Call Unequip for original outfit
+            foreach (string clothingName in originalOutfit)
+            {
+                modEntry.Logger.Log("Removing item: " + clothingName);
+                TequilaClothing.Unequip(clothingName);
+            }
+            
+            //  Call Unequip for original headwear
+            foreach (string clothingName in originalHeadwear)
+            {
+                modEntry.Logger.Log("Removing item: " + clothingName);
+                TequilaClothingHeadwear.UnequipHeadWear(clothingName);
+            }
+            
+            originalOutfit.Clear();
+            originalHeadwear.Clear();
+            
+            // Call equip for current outfit
+            foreach (string clothingName in currentOutfit)
+            {
+                modEntry.Logger.Log("Adding item: " + clothingName);
+                TequilaClothing.Equip(clothingName);
+                originalOutfit.Add(clothingName);
+            }
+            
+            // Call equip for current headwear
+            foreach (string clothingName in currentHeadwear)
+            {
+                modEntry.Logger.Log("Adding item: " + clothingName);
+                TequilaClothingHeadwear.EquipHeadWear(clothingName);
+                originalHeadwear.Add(clothingName);
+            }
+            
+            updatingClothes = false;
+        }
     }
 
 
@@ -137,6 +189,10 @@ namespace Disco_Elysium_Mod
             if (GUILayout.Button("Changing Clothes Doesn't Change Appearance: " + (ClothesChange.on ? "OFF" : "ON"), GUILayout.Width(400f)))
             {
                 ClothesChange.on = !ClothesChange.on;
+                if (ClothesChange.on)
+                {
+                    ClothesChange.UpdateClothing(modEntry);
+                }
             }
 
             if (GUILayout.Button("Toggle HUD", GUILayout.Width(400f)))
@@ -144,6 +200,7 @@ namespace Disco_Elysium_Mod
                 Sunshine.Views.HudToggle.Singleton.ToggleVisibility();
             }
         }
+
     }
 
 
@@ -182,10 +239,17 @@ namespace Disco_Elysium_Mod
         [HarmonyPrefix]
         [HarmonyPatch("Equip")]
         [HarmonyPatch(new Type[] { typeof(string), typeof(bool) })]
-        static bool Prefix1()
+        static bool Prefix1(string itemName)
         {
             if (ClothesChange.ready)
             {
+                if (!ClothesChange.updatingClothes)
+                {
+                    Main.mod.Logger.Log("Adding item to current outfit: " + itemName);
+                    ClothesChange.currentOutfit.Add(itemName);
+                    if (ClothesChange.on) ClothesChange.originalOutfit.Add(itemName);
+                }
+    
                 return ClothesChange.on;
             }
             else
@@ -193,13 +257,66 @@ namespace Disco_Elysium_Mod
                 return true;
             }
         }
-
+    
         [HarmonyPrefix]
         [HarmonyPatch("Unequip")]
-        static bool Prefix2()
+        static bool Prefix2(string itemname)
         {
             if (ClothesChange.ready)
             {
+                if (!ClothesChange.updatingClothes)
+                {
+                    Main.mod.Logger.Log("Removing item from current outfit: " + itemname);
+                    ClothesChange.currentOutfit.Remove(itemname);
+                    if (ClothesChange.on) ClothesChange.originalOutfit.Remove(itemname);
+                }
+    
+                return ClothesChange.on;
+            }
+            else
+            {
+                return true;
+            }
+        }
+    }
+    
+    [HarmonyPatch(typeof(TequilaClothingHeadwear))]
+    class HeadwearChangePatch
+    {
+        [HarmonyPrefix]
+        [HarmonyPatch("EquipHeadWear")]
+        static bool Prefix1(string itemName)
+        {
+            if (ClothesChange.ready)
+            {
+                if(!ClothesChange.updatingClothes)
+                {
+                    Main.mod.Logger.Log("Adding item to current headwear: " + itemName);
+                    ClothesChange.currentHeadwear.Add(itemName);
+                    if (ClothesChange.on) ClothesChange.originalHeadwear.Add(itemName);
+                }
+    
+                return ClothesChange.on;
+            }
+            else
+            {
+                return true;
+            }
+        }
+    
+        [HarmonyPrefix]
+        [HarmonyPatch("UnequipHeadWear")]
+        static bool Prefix2(string itemName)
+        {
+            if(!ClothesChange.updatingClothes)
+            {
+                if (!ClothesChange.updatingClothes)
+                {
+                    Main.mod.Logger.Log("Removing from current headwear: " + itemName);
+                    ClothesChange.currentHeadwear.Remove(itemName);
+                    if (ClothesChange.on) ClothesChange.originalHeadwear.Remove(itemName);
+                }
+    
                 return ClothesChange.on;
             }
             else
