@@ -83,6 +83,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FastTravelPatches.cs" />
+    <Compile Include="RunSpeedPatches.cs" />
+    <Compile Include="ClothesChange.cs" />
+    <Compile Include="ClothesChangePatches.cs" />
+    <Compile Include="FastTravel.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
