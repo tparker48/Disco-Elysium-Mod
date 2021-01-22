@@ -9,4 +9,4 @@ This mod adds the following features to the game:
 - Force check pass/fail
 - Toggle HUD
 - Toggle: changing clothes doesnt change appearance
-- Fast travel?
+- Fast travel
