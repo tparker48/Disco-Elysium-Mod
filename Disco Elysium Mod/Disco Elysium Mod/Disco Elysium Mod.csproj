@@ -83,6 +83,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChecksPassFail.cs" />
     <Compile Include="GeneratUtilities.cs" />
     <Compile Include="FastTravelPatches.cs" />
     <Compile Include="RunSpeed.cs" />

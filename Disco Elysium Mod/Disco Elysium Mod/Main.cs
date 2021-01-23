@@ -17,6 +17,8 @@ namespace Disco_Elysium_Mod
         public static string physique;
         public static string motorics;
 
+        public static string checkPassFailStatus;
+
         public static UnityModManager.ModEntry mod;
         
         static bool Load(UnityModManager.ModEntry modEntry)
@@ -43,8 +45,6 @@ namespace Disco_Elysium_Mod
             if (Input.GetKeyDown(KeyCode.B))
             {
                 modEntry.Logger.Log("B was pressed!");
-
-                
             }
         }
 
@@ -180,6 +180,27 @@ namespace Disco_Elysium_Mod
             GUILayout.EndVertical();
             GUILayout.EndHorizontal();
 
+            GUILayout.Label("");
+
+            checkPassFailStatus = "Checks : ";
+            if (!CheckPassFail.IsOn())
+            {
+                checkPassFailStatus += " Unaffected";
+            }
+            else if (CheckPassFail.IsPassing())
+            {
+                checkPassFailStatus += " Always PASS";
+            }
+            else
+            {
+                checkPassFailStatus += " Always FAIL";
+            }
+
+
+            if (GUILayout.Button(checkPassFailStatus, GUILayout.Width(200f)))
+            {
+                CheckPassFail.Toggle();
+            }
             GUILayout.Label("");
 
             GUILayout.BeginHorizontal(GUILayout.Height(50f), GUILayout.Width(810f));
