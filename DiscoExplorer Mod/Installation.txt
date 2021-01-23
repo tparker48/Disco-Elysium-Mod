@@ -1,0 +1,38 @@
+Requirements:
+Unity Mod Manager
+
+Installing:
+1. Install Unity Mod Manager
+
+2. Add Disco Elysium to Unity Mod Manager
+	- Navigate to where Unity Mod Manager is installed
+	- Open "UnityModManagerConfig.xml" in a text editor and scroll to the bottom
+	- Add this right above </Config>:
+
+	<GameInfo Name="Disco Elysium">
+    			<Folder>Disco Elysium</Folder>
+    			<ModsDirectory>Mods</ModsDirectory>
+    			<ModInfo>Info.json</ModInfo>
+    			<GameExe>disco.exe</GameExe>
+    			<EntryPoint>[Assembly-CSharp.dll]MainMenuList.Start:Before</EntryPoint>
+    			<StartingPoint>[Assembly-CSharp.dll]MainMenuList.Start:Before</StartingPoint>        
+    			<UIStartingPoint>[Assembly-CSharp.dll]MainMenuList.Start:After</UIStartingPoint>
+    			<MinimalManagerVersion>0.22.15</MinimalManagerVersion>
+	</GameInfo>
+
+
+3. Install Unity Mod Manager for Disco Elysium
+	- Open Unity Mod Manager and select "Disco Elysium" from the list of games
+	- Set Folder to Disco Elysium's install folder (something like "C:\Program Files (x86)\Steam\steamapps\common\Disco Elysium\")
+	- Choose "Doorstep Proxy" option and install
+
+4. Install the mod
+	- Navigate to "Mods" in the Unity Mod Manager
+	- Drag in DiscoExplorer.zip
+	- You should now see DiscoExplorer listed
+
+
+
+Uninstalling:
+	Open Unity Mod Manager, navigate to "Mods"
+	Right click DiscoExplorer and select "Uninstall"

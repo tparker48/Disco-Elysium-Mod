@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-namespace Disco_Elysium_Mod
+namespace Disco_Explorer_Mod
 {
     public static class RunSpeed
     {

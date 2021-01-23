@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityModManagerNet;
 
-namespace Disco_Elysium_Mod
+namespace Disco_Explorer_Mod
 {
     static class ClothesChange
     {

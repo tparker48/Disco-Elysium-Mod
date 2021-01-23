@@ -1,0 +1,8 @@
+{
+  "Id": "DiscoExplorer",
+  "DisplayName": "DiscoExplorer",
+  "Author": "Thomas Parker",
+  "Version": "1.0.0",
+  "AssemblyName": "DiscoExplorer.dll",
+  "EntryMethod": "Disco_Explorer_Mod.Main.Load"
+}

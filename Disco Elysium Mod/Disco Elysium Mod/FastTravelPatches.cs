@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
 
-namespace Disco_Elysium_Mod
+namespace Disco_Explorer_Mod
 {
     [HarmonyPatch(typeof(SunshinePersistence))]
     class FileNameLoggerPatch

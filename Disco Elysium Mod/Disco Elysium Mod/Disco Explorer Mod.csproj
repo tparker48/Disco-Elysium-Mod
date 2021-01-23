@@ -7,8 +7,8 @@
     <ProjectGuid>{FCB5E4FA-69FF-48FB-8113-3FD6F1F3D27E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Disco_Elysium_Mod</RootNamespace>
-    <AssemblyName>Disco Elysium Mod</AssemblyName>
+    <RootNamespace>Disco_Explorer_Mod</RootNamespace>
+    <AssemblyName>DiscoExplorer</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

@@ -2,7 +2,7 @@
 using System.IO;
 using System.Collections.Generic;
 
-namespace Disco_Elysium_Mod
+namespace Disco_Explorer_Mod
 {
     public static class FastTravel
     {
@@ -105,7 +105,7 @@ namespace Disco_Elysium_Mod
 
         private static List<string> locations = new List<string>();
 
-        private static string dir = Path.Combine(Environment.CurrentDirectory, "Mods", "DiscoMod", "FastTravelLocations");
+        private static string dir = Path.Combine(Environment.CurrentDirectory, "Mods", "DiscoExplorer", "FastTravelLocations");
         private static System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(locations.GetType());
     }
 }

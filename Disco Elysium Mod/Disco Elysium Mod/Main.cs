@@ -2,7 +2,7 @@
 using UnityModManagerNet;
 using HarmonyLib;
 
-namespace Disco_Elysium_Mod
+namespace Disco_Explorer_Mod
 {   
     static class Main
     {
