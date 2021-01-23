@@ -6,6 +6,7 @@ namespace Disco_Elysium_Mod
     [HarmonyPatch(typeof(SunshinePersistenceLoadDataManager))]
     class ClothingChangeReadyPatch
     {
+        // toggle clothing change is not ready before load
         [HarmonyPrefix]
         [HarmonyPatch("LoadDataAfterLoadingArea")]
         static bool Prefix()
@@ -14,6 +15,7 @@ namespace Disco_Elysium_Mod
             return true;
         }
 
+        // toggle clothing change is ready after load
         [HarmonyPostfix]
         [HarmonyPatch("LoadDataAfterLoadingArea")]
         static void Postfix()

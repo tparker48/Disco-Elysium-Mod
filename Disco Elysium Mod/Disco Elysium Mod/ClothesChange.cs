@@ -5,17 +5,6 @@ namespace Disco_Elysium_Mod
 {
     static class ClothesChange
     {
-        public static bool ready = false;
-        public static bool on = true;
-        public static bool updatingClothes = false;
-
-        public static List<string> originalOutfit = new List<string>();
-        public static List<string> currentOutfit = new List<string>();
-
-        public static List<string> originalHeadwear = new List<string>();
-        public static List<string> currentHeadwear = new List<string>();
-
-
         public static void UpdateClothing(UnityModManager.ModEntry modEntry)
         {
             updatingClothes = true;
@@ -51,5 +40,16 @@ namespace Disco_Elysium_Mod
 
             updatingClothes = false;
         }
+
+
+        public static bool ready = false;
+        public static bool on = true;
+        public static bool updatingClothes = false;
+
+        public static List<string> originalOutfit = new List<string>();
+        public static List<string> currentOutfit = new List<string>();
+
+        public static List<string> originalHeadwear = new List<string>();
+        public static List<string> currentHeadwear = new List<string>();
     }
 }

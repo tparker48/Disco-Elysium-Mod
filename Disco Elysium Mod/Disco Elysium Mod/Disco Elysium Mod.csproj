@@ -83,8 +83,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GeneratUtilities.cs" />
     <Compile Include="FastTravelPatches.cs" />
-    <Compile Include="RunSpeedPatches.cs" />
+    <Compile Include="RunSpeed.cs" />
     <Compile Include="ClothesChange.cs" />
     <Compile Include="ClothesChangePatches.cs" />
     <Compile Include="FastTravel.cs" />

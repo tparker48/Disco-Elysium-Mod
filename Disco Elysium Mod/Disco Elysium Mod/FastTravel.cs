@@ -6,6 +6,7 @@ namespace Disco_Elysium_Mod
 {
     public static class FastTravel
     {
+        // load the list of available fast travel locations for this save
         public static void Load(string saveName)
         {
             if (!LoadData(saveName))
@@ -14,6 +15,7 @@ namespace Disco_Elysium_Mod
             }
         }
 
+        // save the list of available fast travel locations for this save
         public static void Save(string saveName)
         {
             try
@@ -30,6 +32,7 @@ namespace Disco_Elysium_Mod
             }
         }
 
+        // add location to available fast travel locations
         public static void AddVisited(string destination)
         {
             if (destination == whirling || destination == shack || destination == pier || destination == union)
@@ -40,33 +43,28 @@ namespace Disco_Elysium_Mod
                 }
             }
         }
+
+        // returns true if the target destination is available for this save
         public static bool CheckVisited(string destination)
         {
             return locations.Contains(destination);
         }
+
+        // fast travel to desired destination
         public static void GoTo(string destination)
         {
-            Sunshine.Dialogue.MapLuaFunctions.GoToDestination(FastTravel.areaId, destination);
+            if (CheckVisited(destination))
+            {
+                Sunshine.Dialogue.MapLuaFunctions.GoToDestination(FastTravel.areaId, destination);
+            }
         }
 
-        public static string areaId = "Martinaise-ext";
-
-        public static string whirling = "whirling";
-        public static string shack = "second-home";
-        public static string union = "union-boss";
-        public static string pier = "apartments-pier-1";
-
-        private static string dir = Path.Combine(Environment.CurrentDirectory,"Mods","DiscoMod","FastTravelLocations");
-
-        private static List<string> locations = new List<string>();
-        private static System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(locations.GetType());
 
         private static void InitData()
         {
             locations = new List<string>();
         }
 
-        
         private static bool LoadData(string saveName)
         {
             try
@@ -97,5 +95,17 @@ namespace Disco_Elysium_Mod
             return saveName;
         }
 
+
+        public static string areaId = "Martinaise-ext";
+
+        public static string whirling = "whirling";
+        public static string shack = "second-home";
+        public static string union = "union-boss";
+        public static string pier = "apartments-pier-1";
+
+        private static List<string> locations = new List<string>();
+
+        private static string dir = Path.Combine(Environment.CurrentDirectory, "Mods", "DiscoMod", "FastTravelLocations");
+        private static System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(locations.GetType());
     }
 }
