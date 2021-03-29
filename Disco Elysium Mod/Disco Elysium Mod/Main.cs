@@ -28,7 +28,6 @@ namespace Disco_Explorer_Mod
 
             mod = modEntry;
             modEntry.OnToggle = OnToggle;
-            modEntry.OnUpdate = OnUpdate;
             modEntry.OnGUI = OnGUI;
 
             return true;
@@ -40,13 +39,6 @@ namespace Disco_Explorer_Mod
             return true;
         }
 
-        static void OnUpdate(UnityModManager.ModEntry modEntry, float dt)
-        {
-            if (Input.GetKeyDown(KeyCode.B))
-            {
-                modEntry.Logger.Log("B was pressed!");
-            }
-        }
 
         static void OnGUI(UnityModManager.ModEntry modEntry)
         {
