@@ -230,7 +230,22 @@ namespace Disco_Explorer_Mod
             }
 
             GUILayout.EndHorizontal();
-            
+            GUILayout.BeginHorizontal(GUILayout.Height(50f), GUILayout.Width(405f));
+
+            if (GUILayout.Button("Unlock White Checks", GUILayout.Width(200f)))
+            {
+                GeneralUtilities.UnlockAllWhiteChecks();
+            }
+
+            GUILayout.Label(" ");
+
+            if (GUILayout.Button("Finish ALL Thoughts", GUILayout.Width(200f)))
+            {
+                GeneralUtilities.FinishAllThoughts();
+            }
+
+            GUILayout.EndHorizontal();
+
         }
     }
 

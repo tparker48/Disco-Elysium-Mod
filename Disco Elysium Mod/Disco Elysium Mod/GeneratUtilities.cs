@@ -10,9 +10,9 @@ namespace Disco_Explorer_Mod
             {
                 value = 1;
             }
-            else if (value > 6)
+            else if (value > 20)
             {
-                value = 6;
+                value = 20;
             }
 
             Sunshine.Metric.CharacterSheet character = Voidforge.SingletonComponent<World>.Singleton.you;
@@ -68,6 +68,26 @@ namespace Disco_Explorer_Mod
         {
             Sunshine.Views.HudToggle.Singleton.ToggleVisibility();
         }
-        
+
+        // additions suggested and provided by : T1eru @ Nexus Mods -----------------------------------------
+        public static void FinishAllThoughts()
+        {
+            new ThoughtsAndItemsTests().FinishThoughts();
+        }
+
+        // requires a rep string designating one of the following repuation types:
+        // apocalypse_cop, boring_cop, superstar_cop, sorry_cop, communist, revacholian_nationhood, ultraliberal, moralist,
+        // honour, the_destroyer, torque_dork, art_cop, remote_viewer, suicide_cop
+        //public static void ReputationGrows(string rep)
+        //{
+        //    Sunshine.Dialogue.KarmaLuaFunctions.ReputationGrows(rep);
+        //}
+
+        public static void UnlockAllWhiteChecks()
+        {
+            new DialogueTests().UnlockAllWhiteChecks();
+        }
+
+        // ---------------------------------------------------------------------------------------------------
     }
 }
