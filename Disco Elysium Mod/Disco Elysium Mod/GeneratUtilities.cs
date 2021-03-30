@@ -5,15 +5,6 @@ namespace Disco_Explorer_Mod
     {
         // Set abilityType to given value [1,6]
         public static void SetAbilityLevel(Sunshine.Metric.AbilityType abilityType, int value)
-        {
-            if (value < 1)
-            {
-                value = 1;
-            }
-            else if (value > 20)
-            {
-                value = 20;
-            }
 
             Sunshine.Metric.CharacterSheet character = Voidforge.SingletonComponent<World>.Singleton.you;
             Sunshine.Metric.Ability ability = character.GetAbility(abilityType);
