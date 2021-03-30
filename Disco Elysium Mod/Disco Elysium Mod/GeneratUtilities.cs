@@ -32,12 +32,10 @@ namespace Disco_Explorer_Mod
         // adds givent amount of skill points
         public static void SetSkillPoints(int amount)
         {
-  
             if (amount >= 0 && amount <= 100)
             {
                 LiteSingleton<Sunshine.Metric.PlayerCharacter>.Singleton.SkillPoints = amount;
             }
-
         }
 
         public static void SetMoney(int amount)
@@ -54,15 +52,13 @@ namespace Disco_Explorer_Mod
         // adds every piece of clothing to the player's inventory
         public static void AddAllClothes()
         {
-            ThoughtsAndItemsTests testRunner = new ThoughtsAndItemsTests();
-            testRunner.AddAllClothes();
+            new ThoughtsAndItemsTests().AddAllClothes();
         }
 
         // makes every thought researchable
         public static void AddAllThoughts()
         {
-            ThoughtsAndItemsTests testRunner = new ThoughtsAndItemsTests();
-            testRunner.AddAllThoughts();
+            new ThoughtsAndItemsTests().AddAllThoughts();
         }
         public static void ToggleHud()
         {
@@ -76,8 +72,8 @@ namespace Disco_Explorer_Mod
         }
 
         // requires a rep string designating one of the following repuation types:
-        // apocalypse_cop, boring_cop, superstar_cop, sorry_cop, communist, revacholian_nationhood, ultraliberal, moralist,
-        // honour, the_destroyer, torque_dork, art_cop, remote_viewer, suicide_cop
+        // [apocalypse_cop, boring_cop, superstar_cop, sorry_cop, communist, revacholian_nationhood, ultraliberal, moralist,
+        // honour, the_destroyer, torque_dork, art_cop, remote_viewer, suicide_cop]
         //public static void ReputationGrows(string rep)
         //{
         //    Sunshine.Dialogue.KarmaLuaFunctions.ReputationGrows(rep);
@@ -87,7 +83,6 @@ namespace Disco_Explorer_Mod
         {
             new DialogueTests().UnlockAllWhiteChecks();
         }
-
         // ---------------------------------------------------------------------------------------------------
     }
 }
