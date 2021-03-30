@@ -36,11 +36,11 @@ namespace Disco_Explorer_Mod
         {
             if (passing)
             {
-                return 6;
+                return 100;
             }
             else
             {
-                return 1;
+                return -100;
             }
         }
 
