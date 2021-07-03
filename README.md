@@ -1,5 +1,8 @@
-# Disco-Elysium-Mod
-A mod for Disco Elysium with some requested features
+# Disco-Elysium-Mod 
+
+A mod for Disco Elysium (original release) with some requested features
+
+*** Does not support Final Cut ***
 
 https://www.nexusmods.com/discoelysium/mods/12
 
